@@ -1,4 +1,6 @@
-import matplotlib.pyplot as plt
+import matplotlib
+matplotlib.use('agg')
+import matplotlib.pyplot as plt # Change as suggested in https://stackoverflow.com/questions/4783810/install-tkinter-for-python
 from mpl_toolkits.mplot3d import axes3d, Axes3D 
 import numpy as np
 import pickle
