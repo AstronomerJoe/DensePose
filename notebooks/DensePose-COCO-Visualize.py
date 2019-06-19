@@ -1,7 +1,9 @@
 from pycocotools.coco import COCO
 import os
 import cv2
-import matplotlib.pyplot as plt
+import matplotlib
+matplotlib.use('agg')
+import matplotlib.pyplot as plt # Change as suggested in https://stackoverflow.com/questions/4783810/install-tkinter-for-python
 import numpy as np
 import pycocotools.mask as mask_util
 from random import randint
