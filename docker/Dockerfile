@@ -13,6 +13,11 @@ RUN git clone https://github.com/AstronomerJoe/DensePose /densepose
 # Install Python dependencies
 RUN pip install -r /densepose/requirements.txt
 
+# Sort out proxys for using apt-get behind the R&D proxys
+
+# Get wget as required at a later stage
+RUN sudo apt-get install wget
+
 # Install the COCO API
 RUN git clone https://github.com/cocodataset/cocoapi.git /cocoapi
 WORKDIR /cocoapi/PythonAPI
