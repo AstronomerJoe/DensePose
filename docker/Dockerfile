@@ -1,6 +1,10 @@
 # Use Caffe2 image as parent image
 FROM caffe2/caffe2:snapshot-py2-cuda9.0-cudnn7-ubuntu16.04
 
+ARG http_proxy=http://www-cache.rd.bbc.co.uk:8080/
+ARG https_proxy=http://www-cache.rd.bbc.co.uk:8080/
+ARG no_proxy=localhost,127.0.0.0/8,::1,172.29.98.147
+
 RUN mv /usr/local/caffe2 /usr/local/caffe2_build
 ENV Caffe2_DIR /usr/local/caffe2_build
 
@@ -14,8 +18,8 @@ RUN git clone https://github.com/AstronomerJoe/DensePose /densepose
 RUN pip install -r /densepose/requirements.txt
 
 # Get wget as required at a later stage
-RUN sudo apt-get update
-RUN sudo apt-get install wget
+RUN apt-get update
+RUN apt-get install wget
 
 # Install the COCO API
 RUN git clone https://github.com/cocodataset/cocoapi.git /cocoapi
