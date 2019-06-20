@@ -14,7 +14,7 @@ RUN git clone https://github.com/AstronomerJoe/DensePose /densepose
 RUN pip install -r /densepose/requirements.txt
 
 # Get wget as required at a later stage
-RUN apt-get update
+RUN sudo apt-get update
 RUN sudo apt-get install wget
 
 # Install the COCO API
