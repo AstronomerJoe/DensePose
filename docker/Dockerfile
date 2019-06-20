@@ -5,13 +5,12 @@ ARG http_proxy=http://www-cache.rd.bbc.co.uk:8080/
 ARG https_proxy=http://www-cache.rd.bbc.co.uk:8080/
 ARG no_proxy=localhost,127.0.0.0/8,::1,172.29.98.147
 
-RUN cat <<EOF >> ~/.bashrc                                                                  /
-export no_proxy=.rd.bbc.co.uk,.sandbox.bbc.co.uk,127.0.0.1,localhost,mirror.rd.bbc.co.uk    /
-export http_proxy=http://www-cache.rd.bbc.co.uk:8080                                        /
-export https_proxy=http://www-cache.rd.bbc.co.uk:8080                                       /
-export ftp_proxy="ftp://www-cache.rd.bbc.co.uk:8080/"                                       /
-export socks_proxy="socks://socks-gw.rd.bbc.co.uk:1080/"                                    /
-EOF
+RUN \
+echo "no_proxy=.rd.bbc.co.uk,.sandbox.bbc.co.uk,127.0.0.1,localhost,mirror.rd.bbc.co.uk" >> ~/.bashrc && \
+echo "http_proxy=http://www-cache.rd.bbc.co.uk:8080"                                     >> ~/.bashrc && \
+echo "https_proxy=http://www-cache.rd.bbc.co.uk:8080"                                    >> ~/.bashrc && \         
+echo "ftp_proxy=ftp://www-cache.rd.bbc.co.uk:8080/"                                      >> ~/.bashrc && \
+echo "socks_proxy=socks://socks-gw.rd.bbc.co.uk:1080/"                                   >> ~/.bashrc
 
 RUN mv /usr/local/caffe2 /usr/local/caffe2_build
 ENV Caffe2_DIR /usr/local/caffe2_build
