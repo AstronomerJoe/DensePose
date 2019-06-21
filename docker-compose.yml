@@ -1,0 +1,15 @@
+version: "2.3"
+services:
+  densepose:
+    build:
+      context: ./docker
+      dockerfile: Dockerfile
+    ports:
+     - 8888:8888
+    environment:
+     - http_proxy=${http_proxy}
+     - https_proxy=${https_proxy}
+     - no_proxy=localhost,127.0.0.0/8,::1,172.29.98.147"
+     - NVIDIA_VISIBLE_DEVICES=1
+    runtime: nvidia
+    entrypoint: bash
