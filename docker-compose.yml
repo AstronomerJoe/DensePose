@@ -11,5 +11,7 @@ services:
      - https_proxy=${https_proxy}
      - no_proxy=localhost,127.0.0.0/8,::1,172.29.98.147"
      - NVIDIA_VISIBLE_DEVICES=1
+    volumes:
+     - .:/densepose
     runtime: nvidia
     entrypoint: bash
