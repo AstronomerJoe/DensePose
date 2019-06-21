@@ -3,7 +3,7 @@ FROM caffe2/caffe2:snapshot-py2-cuda9.0-cudnn7-ubuntu16.04
 
 ARG http_proxy=http://www-cache.rd.bbc.co.uk:8080/
 ARG https_proxy=https://www-cache.rd.bbc.co.uk:8080/
-ARG no_proxy=.rd.bbc.co.uk,127.0.0.1,localhost,mirror.rd.bbc.co.uk 
+ARG no_proxy=.rd.bbc.co.uk,127.0.0.1,localhost,mirror.rd.bbc.co.uk
 
 RUN mv /usr/local/caffe2 /usr/local/caffe2_build
 ENV Caffe2_DIR /usr/local/caffe2_build
