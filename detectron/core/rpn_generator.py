@@ -108,6 +108,9 @@ def multi_gpu_generate_rpn_on_dataset(
         dict(boxes=boxes, scores=scores, ids=ids, cfg=cfg_yaml), rpn_file
     )
     logger.info('Wrote RPN proposals to {}'.format(os.path.abspath(rpn_file)))
+    
+    print("multi_gpu_generate_rpn_on_dataset - boxes: ", boxes)
+    print("multi_gpu_generate_rpn_on_dataset - scores: ", scores)
     return boxes, scores, ids, rpn_file
 
 
@@ -157,6 +160,9 @@ def generate_rpn_on_range(
         dict(boxes=boxes, scores=scores, ids=ids, cfg=cfg_yaml), rpn_file
     )
     logger.info('Wrote RPN proposals to {}'.format(os.path.abspath(rpn_file)))
+    
+    print("generate_rpn_on_range - boxes: ", boxes)
+    print("generate_rpn_on_range - scores: ", scores)
     return boxes, scores, ids, rpn_file
 
 
@@ -195,6 +201,8 @@ def generate_proposals_on_roidb(
                 )
             )
 
+    print("generate_proposals_on_roidb - roidb_boxes: ", roidb_boxes)
+    print("generate_proposals_on_roidb - roidb_scores: ", roidb_scores)
     return roidb_boxes, roidb_scores, roidb_ids
 
 
@@ -240,6 +248,9 @@ def im_proposals(model, im):
     # so we remove it since we just want to return boxes
     # Scale proposals back to the original input image scale
     boxes = boxes[:, 1:] / im_scale
+    
+    print("im_proposals - boxes: ", boxes)
+    print("im_proposals - scores: ", scores)
     return boxes, scores
 
 
