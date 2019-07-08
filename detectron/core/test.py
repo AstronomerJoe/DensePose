@@ -104,7 +104,9 @@ def im_detect_all(model, im, box_proposals, timers=None):
         
     else:
         cls_bodys = None
-
+    
+    print("im_detect_all scores: ", scores)
+    print("im_detect_all boxes: ", boxes)
     return cls_boxes, cls_segms, cls_keyps, cls_bodys
 
 
