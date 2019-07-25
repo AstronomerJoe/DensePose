@@ -20,6 +20,8 @@ RUN pip install -r /densepose/requirements.txt
 # Get wget as required at a later stage
 RUN apt-get -y clean && apt-get -y update
 RUN apt-get install -y wget nano
+RUN apt-get install build-essential libpoppler-cpp-dev pkg-config python-dev
+
 
 # Install the COCO API
 RUN git clone https://github.com/cocodataset/cocoapi.git /cocoapi
