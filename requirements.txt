@@ -10,4 +10,3 @@ h5py
 memory_profiler
 jupyter
 chumpy
-pdftotext
