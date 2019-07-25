@@ -20,6 +20,7 @@ import cv2  # NOQA (Must import before importing caffe2 due to bug in cv2)
 import glob
 import logging
 import os
+import numpy as np
 import sys
 import time
 
@@ -107,6 +108,7 @@ def main(args):
         with c2_utils.NamedCudaScope(0):
             cls_boxes, cls_segms, cls_keyps, cls_bodys = infer_engine.im_detect_all(
                 model, im, None, timers=timers
+
             )
         logger.info('Inference time: {:.3f}s'.format(time.time() - t))
         for k, v in timers.items():
@@ -116,6 +118,9 @@ def main(args):
                 ' \ Note: inference on the first image will be slower than the '
                 'rest (caches and auto-tuning need to warm up)'
             )
+
+
+	np.save(out_name.replace('.pdf', '.npy'), cls_boxes[1])
 
         vis_utils.vis_one_image(
             im[:, :, ::-1],  # BGR -> RGB for visualization
